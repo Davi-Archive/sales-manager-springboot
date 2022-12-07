@@ -1,6 +1,7 @@
 package sales.rest.controller;
 
 import sales.domain.entity.Pedido;
+import sales.rest.dto.InformacoesPedidoDTO;
 import sales.rest.dto.PedidoDTO;
 import sales.service.PedidoService;
 
@@ -26,4 +27,7 @@ public class PedidoController {
         return pedido.getId();
     }
 
+    public InformacoesPedidoDTO getById(@PathVariable Integer id) {
+    	
+    }
 }

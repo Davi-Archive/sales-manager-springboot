@@ -74,4 +74,10 @@ public class PedidoServiceImpl implements PedidoService {
                 }).collect(Collectors.toList());
 
     }
+
+	@Override
+	public Pedido obterPedidoCompleto(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

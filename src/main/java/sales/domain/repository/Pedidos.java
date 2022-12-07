@@ -6,9 +6,12 @@ import sales.domain.entity.Cliente;
 import sales.domain.entity.Pedido;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public interface Pedidos extends JpaRepository<Pedido, Integer> {
 
     List<Pedido> findByCliente(Cliente cliente);
+    
+    Optional<Pedido> findByIdFetchItens(Integer id);
 }
