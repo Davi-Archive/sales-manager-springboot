@@ -9,6 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -31,6 +34,17 @@ public class ClientController {
 	@GetMapping("/{name}")
 	public ResponseEntity<List<Client>> findClientByName(@PathVariable String name) {
 		return ResponseEntity.ok().body(service.findByName(name));
+	}
+
+	@PostMapping
+	public ResponseEntity<Client> addOneClient(@RequestBody Client reqClient) {
+		return ResponseEntity.ok().body(service.postOne(reqClient));
+
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<Client> updateOneClient(@RequestBody Client reqClient, @PathVariable Integer id) {
+		return ResponseEntity.ok().body(service.updateOneById(reqClient, id));
 	}
 
 	@DeleteMapping("/{id}")
