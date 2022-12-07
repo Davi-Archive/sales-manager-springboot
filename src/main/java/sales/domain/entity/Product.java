@@ -1,4 +1,4 @@
-package sales.entity;
+package sales.domain.entity;
 
 import java.math.BigDecimal;
 
@@ -13,9 +13,11 @@ import jakarta.persistence.Table;
 public class Product {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
 	private String description;
+	
 	private BigDecimal price;
 	
 	public Integer getId() {

@@ -1,4 +1,4 @@
-package sales.services;
+package sales.domain.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import jakarta.persistence.EntityManager;
-import sales.entity.Client;
-import sales.repository.ClientRepository;
+import sales.domain.entity.Client;
+import sales.domain.repository.ClientRepository;
 
 @Service
 public class ClientService {
@@ -26,7 +25,7 @@ public class ClientService {
 	}
 
 	public List<Client> findByName(String name) {
-		return repository.findBynameIgnoreCase(name);
+		return repository.findByNameLikeIgnoreCase(name);
 	}
 
 	public List<Client> saveAll(List<Client> list) {
@@ -51,6 +50,10 @@ public class ClientService {
 		} catch (Exception e) {
 			throw new ResponseStatusException(404, "Client to be edited was not founded.", e);
 		}
+	}
+
+	public Client findClientFetchOrders(Integer id) {
+		return repository.findClientFetchOrderProduct(id);
 	}
 
 }
