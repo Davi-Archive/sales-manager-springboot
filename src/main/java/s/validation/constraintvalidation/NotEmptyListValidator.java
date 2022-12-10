@@ -1,20 +1,22 @@
 package s.validation.constraintvalidation;
 
-import java.util.List;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
 import s.validation.NotEmptyList;
 
-public class NotEmptyListValidator implements ConstraintValidator<NotEmptyList, List> {
+import java.util.List;
 
-	@Override
-	public boolean isValid(List list, ConstraintValidatorContext context) {
-		return list != null && !list.isEmpty();
-	}
+public class NotEmptyListValidator
+        implements ConstraintValidator<NotEmptyList, List> {
 
-	@Override
-	public void initialize(NotEmptyList constraint) {
-		constraint.message();
-	}
+    @Override
+    public boolean isValid(List list,
+                           ConstraintValidatorContext constraintValidatorContext) {
+        return list != null && !list.isEmpty();
+    }
+
+    @Override
+    public void initialize( NotEmptyList constraintAnnotation ) {
+    }
 }

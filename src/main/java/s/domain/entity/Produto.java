@@ -1,18 +1,11 @@
 package s.domain.entity;
 
-import java.math.BigDecimal;
+import lombok.*;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,17 +14,17 @@ import lombok.NoArgsConstructor;
 @Table(name = "produto")
 public class Produto {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Integer id;
 
-	@Column(name = "descricao")
-	@NotEmpty(message = "{campo.descricao.obrigatorio}")
-	private String descricao;
+    @Column(name = "descricao")
+    @NotEmpty(message = "{campo.descricao.obrigatorio}")
+    private String descricao;
 
-	@Column(name = "preco_unitario")
-	@NotNull(message = "{campo.preco.obrigatorio}")
-	private BigDecimal preco;
+    @Column(name = "preco_unitario")
+    @NotNull(message = "{campo.preco.obrigatorio}")
+    private BigDecimal preco;
 
 }

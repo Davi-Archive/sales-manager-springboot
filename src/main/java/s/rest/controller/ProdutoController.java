@@ -6,11 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import jakarta.validation.Valid;
 import s.domain.entity.Cliente;
 import s.domain.entity.Produto;
 import s.domain.repository.Produtos;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
@@ -33,10 +33,8 @@ public class ProdutoController {
 
     @PutMapping("{id}")
     @ResponseStatus(NO_CONTENT)
-    public void update( 
-    		@PathVariable Integer id, 
-    		@RequestBody @Valid Produto produto 
-    		){
+    public void update( @PathVariable Integer id,
+                        @RequestBody @Valid Produto produto ){
         repository
                 .findById(id)
                 .map( p -> {
