@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import s.domain.entity.Usuario;
 import s.domain.repository.UsuarioRepository;
+import s.exception.SenhaInvalidaException;
 
 @Service
 public class UsuarioServiceImpl implements UserDetailsService {
@@ -25,6 +26,16 @@ public class UsuarioServiceImpl implements UserDetailsService {
 	@Transactional
 	public Usuario salvar(Usuario usuario) {
 		return repository.save(usuario);
+	}
+
+	public UserDetails autenticar(Usuario usuario) {
+		UserDetails userDetails = loadUserByUsername(usuario.getLogin());
+		boolean senhasBatem = encoder.matches(usuario.getSenha(), userDetails.getPassword());
+	
+		if(senhasBatem) {
+			return userDetails;
+		}
+		throw new SenhaInvalidaException();
 	}
 
 	@Override
