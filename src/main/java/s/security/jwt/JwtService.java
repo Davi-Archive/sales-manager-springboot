@@ -1,4 +1,4 @@
-package s;
+package s.security.jwt;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -14,6 +14,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import s.VendasApplication;
 import s.domain.entity.Usuario;
 
 @Service
