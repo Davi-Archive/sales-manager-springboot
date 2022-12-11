@@ -13,12 +13,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import lombok.AllArgsConstructor;
 import s.service.impl.UsuarioServiceImpl;
 
+@AllArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
 
 	private JwtService jwtService;
 	private UsuarioServiceImpl usuarioService;
+
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
